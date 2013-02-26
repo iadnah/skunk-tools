@@ -1,0 +1,58 @@
+Network Jack 0.02-beta
+==============================================================================
+Network Jack is a tool meant to provide much of the same functionality
+as the well known tool NetCat, and to build upon some of that functionality.
+
+It is able to function as a port scanning tool, a discreet host discovery tool,
+and as both a listening and connect-back shell.
+
+Network Jack is released under the MIT License.
+
+Portscanning:
+==============================================================================
+jack -p ports -s host [-b]
+	ports can be specified as either a single port, a list of ports
+	seperated by commas, or a range of ports, like 21-25, or a combination
+	of ranges and comma-seperated ports (like 21-25,80,443)
+
+	a host can be specified either by IP address or hostname, or as a block
+	of addresses, like 192.168.1.0/24 to scan all addresses from
+	192.168.1.0 to 192.168.1.255
+
+	The -b option tells jack to grab banners when scanning. Non-ascii banners
+	will be displayed as a hex string.
+
+
+Host discovery:
+==============================================================================
+Jack is able to discover hosts in a discreet manner using a method called dns
+brute forcing. Using this method jack will attempt to resolve DNS records for
+several common subdomains of a given domain, and show you what they resolve to.
+
+The idea here is that discovering hosts this way doesn't require any actual
+connection to the target network, meaning that discovering hosts in this way won't
+be detected by an intrusion detection system.
+
+To use jack this way use this command:
+	jack -dns domain.com
+
+	ex: jack -dns google.com
+
+
+Bind Shell
+==============================================================================
+Jack can bind a shell to a given port using this command:
+	jack -l -p <port>
+	ex: jack -l -p 7000 (to bind a shell on port 7000)
+
+This creates a dumb terminal on that port, meaning that control functions needed
+by software like ncurses may mess up on such a shell. However, normal, CLI commands
+and programs will work just fine.
+
+Jack can also connect to a port on a remote machine and spawn a shell that way. The
+command for doing this is:
+	jack -c <target host> -p <port>
+
+You'll need to have something listening on the target port to take advantage of this
+feature.
+
