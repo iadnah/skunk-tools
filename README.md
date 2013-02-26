@@ -5,3 +5,8 @@ A collection of scripts, snippets, and utils loosely related to security and pos
 
 Warning: A lot of this stuff is not complete.
 
+Index____
+* (enumeration) - stuff that gathers info about a system
+* (passcracking) - code related to password or hash cracking
+
+
