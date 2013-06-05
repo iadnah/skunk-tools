@@ -1,7 +1,10 @@
 #!/bin/bash
 # ssh_encrypt_key.sh
 # By: iadnah@uplinklounge.com
-# Last Edit: June 1, 2013
+# Last Edit: June 5, 2013
+#
+# WARNING: Keys encoded this way may not work with ssh clients
+#	other than openssh !!!
 #
 # openssh private keys are encrypted using AES with a MD5 digest
 # which are relatively quick to compute
